@@ -14,7 +14,7 @@ int findMaxIndexInColumn(const vector<vector<int>>& matrix, int col) {
     return maxIndex;
 }
 
-// Recursive function to find a peak
+// Recursive function to find a peak of the array
 pair<int, int> find2DPeak(const vector<vector<int>>& matrix, int startCol, int endCol) {
     int midCol = (startCol + endCol) / 2;
     int maxRow = findMaxIndexInColumn(matrix, midCol);

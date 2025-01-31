@@ -4,7 +4,7 @@ using namespace std;
 int findPeak(int arr[], int low, int high, int n) {
     int mid = low + (high - low) / 2;
     
-    // Check if mid is a peak
+    // Check if mid is a peak or not
     if ((mid == 0 || arr[mid] >= arr[mid - 1]) && 
         (mid == n - 1 || arr[mid] >= arr[mid + 1])) {
         return mid;
