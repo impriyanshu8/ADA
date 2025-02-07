@@ -20,7 +20,7 @@ int partition(vector<int>&numbers,int l, int r){
         return j;
 }
 void quicksort(vector<int>&numbers , int l , int r){
-    if (l >= r) { // Base case: stop recursion if the subarray has 1 or 0 elements
+    if (l >= r) { 
         return;
     }
     int pivot = partition(numbers ,l,r);
