@@ -18,7 +18,7 @@ void generateMagicSquare(int n) {
         int new_i = (i - 1 + n) % n;
         int new_j = (j + 1) % n;
 
-        // If next cell is already occupied, move down 
+        // If next cell is already occupied move down 
         if (magicSquare[new_i][new_j] != 0) {
             i = (i + 1) % n;
         } else {

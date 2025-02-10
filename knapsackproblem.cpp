@@ -7,7 +7,7 @@ struct item {
     int weight;
     double ratio;
 };
-
+// comparator for sorting the array
 bool cmp(item a, item b) {
     return a.ratio > b.ratio;
 }
@@ -35,6 +35,7 @@ item* fractionalKnapsack(int W, item arr[], int n, int &selectedCount) {
         }
     }
 
+// to dispaly the results
     cout << "\nSelected Items in Knapsack:" << endl;
     for (int i = 0; i < selectedCount; i++) {
         cout << "Value: " << selectedItems[i].value << ", Weight: " << selectedItems[i].weight 
