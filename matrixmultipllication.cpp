@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 using namespace std;
+
 vector<vector<int>> multiplyMatrix( const vector<vector<int>> &matrixA ,
      const vector<vector<int>> &matrixB){
         int rowsA = matrixA.size();
@@ -13,7 +14,7 @@ vector<vector<int>> multiplyMatrix( const vector<vector<int>> &matrixA ,
             for(int j=0;j<colsB;j++){
                 result[i][j] = 0;
                     for(int k=0;k<colsA;k++){
-                        result[i][j]+=( matrixA[i][k] )*(matrixB[k][j]);
+                        result[i][j]+=( matrixA[i][k] )*(matrixB[k][j]); //Formula to multiply two matrix
                     }
             }
         }
