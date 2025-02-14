@@ -6,7 +6,7 @@ struct Point {
     int x, y;
 };
 
-// Function to calculate the determinant of 
+// Function to calculate the determinant to  calculate sign
 int determinant(Point p1, Point p2, Point p) {
     return (p2.x - p1.x) * (p.y - p1.y) - (p.x - p1.x) * (p2.y - p1.y);
 }
