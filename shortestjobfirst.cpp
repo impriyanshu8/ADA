@@ -2,6 +2,7 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
+// structure to describe the attribites of process
 struct Process {
     int id;
     int arrivalTime;
