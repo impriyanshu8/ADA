@@ -18,6 +18,7 @@ int findParent(int node, vector<int>& parent) {
         parent[node] = findParent(parent[node], parent);
     return parent[node];
 }
+// comments
 
 void unionSets(int u, int v, vector<int>& parent, vector<int>& rank) {
     u = findParent(u, parent);

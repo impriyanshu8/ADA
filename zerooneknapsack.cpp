@@ -40,6 +40,7 @@ void knapsack01(int W, item arr[], int n) {
 
     delete[] selected;
 }
+// kjhj
 
 int main() {
     int n, W;

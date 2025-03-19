@@ -23,7 +23,7 @@ vector<vector<int>> subtractMatrix(const vector<vector<int>>& A, const vector<ve
 vector<vector<int>> strassenMultiply(const vector<vector<int>>& A, const vector<vector<int>>& B) {
     int n = A.size();
     vector<vector<int>> C(n, vector<int>(n));
-
+// jjjh
     if (n == 1) {
         C[0][0] = A[0][0] * B[0][0];
         return C;

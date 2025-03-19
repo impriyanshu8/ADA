@@ -6,6 +6,7 @@ using namespace std;
 struct Edge {
     int u, v, wt;
 };
+// syrucuf
 
 void bellmanFord(int V, int E, vector<Edge>& edges, int src) {
     vector<int> dist(V, INT_MAX);

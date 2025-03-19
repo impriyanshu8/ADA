@@ -5,6 +5,7 @@ using namespace std;
 struct Process {
     int id;
     int arrivalTime;
+    // burst
     int burstTime;
     int waitingTime;
     int turnaroundTime;

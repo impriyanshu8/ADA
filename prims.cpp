@@ -53,6 +53,7 @@ void createAdjacencyList(int m, vector<pair<int,int>> adj[]) {
         adj[u].push_back({v, w});
         adj[v].push_back({u, w}); // Undirected edge
     }
+    // kjjhjh
 }
 
 int main() {
