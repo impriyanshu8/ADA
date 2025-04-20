@@ -1,59 +1,72 @@
 #include<iostream>
 #include<cmath>
 using namespace std;
+
 struct Point {
-    int x , y ;
+    int x, y;
 };
+
+// Function to calculate the determinant
 int determinant(Point p1, Point p2, Point p) {
     return (p2.x - p1.x) * (p.y - p1.y) - (p.x - p1.x) * (p2.y - p1.y);
 }
 
-void findextremepoints(Point point[],int n , Point& leftmost , Point &rightmost){
+// Function to find the leftmost and rightmost points
+void findExtremePoints(Point point[], int n, Point& leftmost, Point& rightmost) {
     leftmost = point[0];
     rightmost = point[0];
-    for (int i=0;i<n;i++){
-        if (point[i].x < leftmost.x){
+    for (int i = 1; i < n; i++) {
+        if (point[i].x < leftmost.x) {
             leftmost = point[i];
         }
-        if (point[i].x > rightmost.x){
+        if (point[i].x > rightmost.x) {
             rightmost = point[i];
         }
     }
 }
-double pointtolinedist(Point p , Point a , Point b){
-        double A = b.y - a.y ;
-        double B = a.x - b.x ;
-        double C = ((b.x)*(a.y)) - ((a.x)*(b.y)) ;
-        double dist = std::abs(A*(p.x) + B*(p.y) + C) / std::sqrt(A*A + B*B);
-        return dist;
+
+// Function to calculate perpendicular distance from point p to line ab
+double pointToLineDist(Point p, Point a, Point b) {
+    double A = b.y - a.y;
+    double B = a.x - b.x;
+    double C = (b.x * a.y) - (a.x * b.y);
+    return abs(A * p.x + B * p.y + C) / sqrt(A * A + B * B);
 }
-Point farthestPoint (Point point[],int n ,Point &leftmost , Point &rightmost){
-    double maxdistance = -1;
-    Point farthest = point[0];
-    for (int i=0; i<n; i++){
-        double dist = pointtolinedist (point[i],leftmost,rightmost);
-        if (dist > maxdistance){
-            maxdistance = dist ;
-            farthest = point[i];
+
+// Function to find the farthest point from line ab on one side
+Point farthestPoint(Point point[], int n, Point a, Point b, int side) {
+    double maxDistance = -1;
+    Point farthest = a;
+
+    for (int i = 0; i < n; i++) {
+        int sign = determinant(a, b, point[i]);
+        if ((side > 0 && sign > 0) || (side < 0 && sign < 0)) {
+            double dist = pointToLineDist(point[i], a, b);
+            if (dist > maxDistance) {
+                maxDistance = dist;
+                farthest = point[i];
+            }
         }
     }
-    return farthest;       
-}
-int main(){
 
-    Point point[] = {{1,2},{2,4},{4,5},{5,6},{7,8},{9,3},{4,3},{5,5},{6,7}};
-    int size = sizeof(point) / sizeof (point[0]);
-    Point leftmost , rightmost ;
-    findextremepoints(point,size,leftmost,rightmost);
-    Point p1;
-    Point p2;
-    for(int i=0;i<size;i++){
-    int sign = determinant(leftmost,rightmost,point[i]) ; 
-    if(sign>0){
-        p1 = point[i];
-    }
-    else {
-     p2 = point[i];
-    }
-}    
+    return farthest;
+}
+
+int main() {
+    Point points[] = {{1,2},{2,4},{4,5},{5,6},{7,8},{9,3},{4,3},{5,5},{6,7}};
+    int size = sizeof(points) / sizeof(points[0]);
+
+    Point leftmost, rightmost;
+    findExtremePoints(points, size, leftmost, rightmost);
+
+    cout << "Leftmost Point: (" << leftmost.x << ", " << leftmost.y << ")\n";
+    cout << "Rightmost Point: (" << rightmost.x << ", " << rightmost.y << ")\n";
+
+    Point pAbove = farthestPoint(points, size, leftmost, rightmost, 1);
+    Point pBelow = farthestPoint(points, size, leftmost, rightmost, -1);
+
+    cout << "Farthest Point Above Line: (" << pAbove.x << ", " << pAbove.y << ")\n";
+    cout << "Farthest Point Below Line: (" << pBelow.x << ", " << pBelow.y << ")\n";
+
+    return 0;
 }
