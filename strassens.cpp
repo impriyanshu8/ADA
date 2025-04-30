@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-// fubbction to add two matrix
 vector<vector<int>> addMatrix(const vector<vector<int>>& A, const vector<vector<int>>& B) {
     int n = A.size();
     vector<vector<int>> C(n, vector<int>(n));
